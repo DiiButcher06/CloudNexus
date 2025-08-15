@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudNexus</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: black;
+            background-image: url("japanbackgrounddigitalart.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Noto Sans JP', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding-top: 20vh;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3rem;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        h2 {
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeIn 3s ease-out forwards;
+            animation-delay: 3s;
+        }
+
+        p {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 1.8s;
+        }
+
+        button {
+            background-color: rgba(62, 11, 11, 0.2);
+            border: 2px solid rgb(3, 17, 22);
+            color: rgb(251, 247, 247);
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: rgba(51, 9, 9, 0.4);
+        }
+
+        /* Snowflake styling */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: rgba(255, 255, 255, 0.65); /* softer brightness */
+            font-size: 1em;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+            text-shadow: 0 0 3px rgba(255,255,255,0.4); /* softer glow */
+        }
+
+        /* Gentle fall with drift */
+        @keyframes fall {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(50vh) translateX(20px); }
+            100% { transform: translateY(100vh) translateX(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Cloud-Nexus</h1>
+    <h2>FAST VPNS</h2>
+    <h3>Feel humbled, for you are in my domain</h3>
+    <p>weekly plan @sh30 only</p>
+    <p>configurations will be sent to your What's App. Click button below to purchase</p>
+
+    <button onclick="startMusic()">🎵 Enter</button>
+
+    <audio id="bgmusic" loop>
+        <source src="VivaldiWinterDrill.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function startMusic() {
+            const music = document.getElementById("bgmusic");
+            music.play();
+            document.querySelector("button").style.display = "none";
+        }
+
+        // Create snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            snowflake.style.animationDuration = (Math.random() * 8 + 10) + 's'; // slower fall
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 20000); // match slower fall timing
+        }
+
+        setInterval(createSnowflake, 500);
+    </script>
+</body>
+</html>
